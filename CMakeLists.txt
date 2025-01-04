@@ -1,22 +1,20 @@
-# Minimum version of CMake
 cmake_minimum_required(VERSION 3.10)
 
-# Project name
-project(Main)
+project(PerformancePlayground)
 
 # Set the C standard
 set(CMAKE_C_STANDARD 11)
 set(CMAKE_C_STANDARD_REQUIRED True)
 
-# Add the source folder
+# Define the source directory
 set(SRC_DIR ${CMAKE_SOURCE_DIR}/src)
 
-# Collect all .c and .h files in the src folder
+# Collect all source (.c) and header (.h) files
 file(GLOB_RECURSE SOURCES "${SRC_DIR}/*.c")
 file(GLOB_RECURSE HEADERS "${SRC_DIR}/*.h")
 
-# Include the src folder for header files
+# Include the src directory for header files
 include_directories(${SRC_DIR})
 
-# Add the executable target
-add_executable(main.o main.c ${SOURCES})
+# Define the executable target
+add_executable(ppg.o main.c ${SOURCES})
