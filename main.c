@@ -1,6 +1,9 @@
-#include <ppg_cache_hierarchy.h>
+#include <ppg_dynamic_array.h>
 #include <ppg_util.h>
 
+#include <stdio.h>
+#include <stdlib.h>
+
 int main() {
-    (void)ppg_cache_hierarchy_print_latency_comparison();
+    return 0;
 }
