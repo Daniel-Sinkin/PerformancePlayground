@@ -2,7 +2,7 @@
 cmake_minimum_required(VERSION 3.10)
 
 # Project name
-project(MyCProject)
+project(Main)
 
 # Set the C standard
 set(CMAKE_C_STANDARD 11)
@@ -19,4 +19,4 @@ file(GLOB_RECURSE HEADERS "${SRC_DIR}/*.h")
 include_directories(${SRC_DIR})
 
 # Add the executable target
-add_executable(${PROJECT_NAME} main.c ${SOURCES})
+add_executable(main.o main.c ${SOURCES})
