@@ -6,18 +6,18 @@
 #include <stdlib.h>
 
 typedef struct {
-    double *start;
-    double *end;
-    double *capacity;
+    int *start;
+    int *end;
+    int *capacity;
 } ppg_DynamicArray;
 
 void ppg_DynamicArray_initialize(ppg_DynamicArray *dynamic_array, size_t initial_capacity);
 
 void ppg_DynamicArray_free(ppg_DynamicArray *dynamic_array);
 
-void ppg_DynamicArray_push_back(ppg_DynamicArray *dynamic_array, double value);
+void ppg_DynamicArray_push_back(ppg_DynamicArray *dynamic_array, int value);
 
-double ppg_DynamicArray_at(const ppg_DynamicArray *dynamic_array, size_t idx);
+int ppg_DynamicArray_at(const ppg_DynamicArray *dynamic_array, size_t idx);
 
 void ppg_DynamicArray_print(const ppg_DynamicArray *dynamic_array);
 

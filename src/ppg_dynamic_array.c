@@ -6,8 +6,8 @@
 #include <stdlib.h>
 
 void ppg_DynamicArray_initialize(ppg_DynamicArray *dynamic_array, size_t initial_capacity) {
-    double *malloc_ptr = malloc(0);
-    dynamic_array->start = malloc(initial_capacity * sizeof(double));
+    int *malloc_ptr = malloc(0);
+    dynamic_array->start = malloc(initial_capacity * sizeof(int));
     if (!dynamic_array->start) {
         fprintf(stderr, "Failed to allocate memory!");
         abort();
@@ -23,7 +23,7 @@ void ppg_DynamicArray_free(ppg_DynamicArray *dynamic_array) {
     dynamic_array->capacity = NULL;
 }
 
-void ppg_DynamicArray_push_back(ppg_DynamicArray *dynamic_array, double value) {
+void ppg_DynamicArray_push_back(ppg_DynamicArray *dynamic_array, int value) {
     if (dynamic_array->end == dynamic_array->capacity) {
         size_t current_size = dynamic_array->capacity - dynamic_array->start;
         size_t new_size;
@@ -32,7 +32,7 @@ void ppg_DynamicArray_push_back(ppg_DynamicArray *dynamic_array, double value) {
         } else {
             new_size = 2 * current_size;
         }
-        dynamic_array->start = realloc(dynamic_array->start, new_size * sizeof(double));
+        dynamic_array->start = realloc(dynamic_array->start, new_size * sizeof(int));
         if (!dynamic_array->start) {
             fprintf(stderr, "Failed to allocate memory during append!\n");
             abort();
@@ -46,7 +46,7 @@ void ppg_DynamicArray_push_back(ppg_DynamicArray *dynamic_array, double value) {
     dynamic_array->end++;
 }
 
-double ppg_DynamicArray_at(const ppg_DynamicArray *dynamic_array, size_t idx) {
+int ppg_DynamicArray_at(const ppg_DynamicArray *dynamic_array, size_t idx) {
     if (idx < ppg_DynamicArray_size(dynamic_array)) {
         return *(dynamic_array->start + idx);
     } else {
@@ -59,7 +59,7 @@ void ppg_DynamicArray_print(const ppg_DynamicArray *dynamic_array) {
     printf("[");
     size_t n = ppg_DynamicArray_size(dynamic_array);
     for (size_t i = 0; i < n; i++) {
-        printf("%.2f", ppg_DynamicArray_at(dynamic_array, i));
+        printf("%d", ppg_DynamicArray_at(dynamic_array, i));
         if (i < n - 1) {
             printf(", ");
         }
@@ -78,7 +78,7 @@ void ppg_dynamic_array_example_1() {
         ppg_DynamicArray_print(&array);
         printf("\n");
 
-        ppg_DynamicArray_push_back(&array, (double)(10.0 * (i + 1)));
+        ppg_DynamicArray_push_back(&array, 10 * (i + 1));
     }
 
     ppg_DynamicArray_free(&array);
